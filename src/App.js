@@ -1,12 +1,15 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import firebase from 'firebase';
+
 import './App.css';
-import firebase from 'firebase'
+import Header from './header/components/Header';
+import Body from './body/components/Body';
+import Footer from './footer/components/Footer';
 
 const provider = new firebase.auth.GoogleAuthProvider();
-export default class App extends Component {
 
-  componentWillMount() {
-    console.log('!firebase.auth().currentUser', firebase.auth().currentUser)
+export default class App extends Component {
+  componentDidMount() {
     firebase.auth().onAuthStateChanged((user) => {
       if (!user) {
         firebase.auth().signInWithPopup(provider).then(function (result) {
@@ -16,15 +19,13 @@ export default class App extends Component {
     })
   }
 
-  handleSignOutClick = () => {
-    firebase.auth().signOut()
-  }
 
   render() {
     return (
       <div>
-        <div>asd</div>
-        <button onClick={this.handleSignOutClick}>SignOut</button>
+        <Header />
+        <Body />
+        <Footer />
       </div>
     );
   }
