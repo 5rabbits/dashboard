@@ -1,21 +1,31 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react'
 import './App.css';
+import firebase from 'firebase'
 
-class App extends Component {
+const provider = new firebase.auth.GoogleAuthProvider();
+export default class App extends Component {
+
+  componentWillMount() {
+    console.log('!firebase.auth().currentUser', firebase.auth().currentUser)
+    firebase.auth().onAuthStateChanged((user) => {
+      if (!user) {
+        firebase.auth().signInWithPopup(provider).then(function (result) {
+        }).catch(function (error) {
+        });
+      }
+    })
+  }
+
+  handleSignOutClick = () => {
+    firebase.auth().signOut()
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        <div>asd</div>
+        <button onClick={this.handleSignOutClick}>SignOut</button>
       </div>
     );
   }
 }
-
-export default App;
