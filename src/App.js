@@ -3,15 +3,14 @@ import './App.css';
 import firebase from 'firebase'
 
 const provider = new firebase.auth.GoogleAuthProvider();
+provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
 export default class App extends Component {
 
   componentWillMount() {
     console.log('!firebase.auth().currentUser', firebase.auth().currentUser)
     firebase.auth().onAuthStateChanged((user) => {
       if (!user) {
-        firebase.auth().signInWithPopup(provider).then(function (result) {
-        }).catch(function (error) {
-        });
+        firebase.auth().signInWithPopup(provider)
       }
     })
   }
