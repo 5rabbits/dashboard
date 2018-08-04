@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
+import { Layout } from 'antd';
 
 import './App.css';
 import Header from './header/components/Header';
@@ -20,11 +21,13 @@ export default class App extends Component {
 
   render() {
     return (
-      <div>
+      <Layout
+        className="layout"
+      >
         <Header />
         <Body />
         <Footer />
-      </div>
-    );
+      </Layout>
+    )
   }
 }

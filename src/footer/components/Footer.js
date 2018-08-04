@@ -1,9 +1,14 @@
 import React, { Component } from 'react'
+import { Layout } from 'antd'
+
+const LayoutFooter = Layout.Footer
 
 export default class Footer extends Component {
   render() {
     return (
-      <div>Footer</div>
+      <LayoutFooter style={{ textAlign: 'center' }}>
+        Dashboard ©2018 Created by Lemontech
+      </LayoutFooter>
     )
   }
 }

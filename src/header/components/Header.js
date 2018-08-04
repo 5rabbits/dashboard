@@ -1,8 +1,16 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import Firebase from 'firebase';
-import { Button } from 'antd';
-import 'antd/dist/antd.css';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import firebase from 'firebase'
+import {
+  Avatar,
+  Menu,
+  Dropdown,
+  Layout,
+} from 'antd'
+
+import './Header.css'
+
+const LayoutHeader = Layout.Header
 
 export default class Header extends Component {
   static propTypes = {
@@ -14,15 +22,46 @@ export default class Header extends Component {
   };
 
   handleSignOutClick = () => {
-    Firebase.auth().signOut();
+    firebase.auth().signOut();
   }
 
+  menu = () => (
+    <Menu>
+      <Menu.Item>
+        <a rel="noopener noreferrer">
+          Settings
+        </a>
+      </Menu.Item>
+      <Menu.Item onClick={this.handleSignOutClick}>
+        <a rel="noopener noreferrer">
+          SignOut
+        </a>
+      </Menu.Item>
+    </Menu>
+  )
+
   render() {
-    console.log('user: ', this.props.user);
     return (
-      <div>
-        <Button onClick={this.handleSignOutClick}>SignOut</Button>
-      </div>
+      <LayoutHeader className="header">
+        <div className="logo" />
+        <Menu
+          theme="dark"
+        >
+        </Menu>
+        <div className="avatar">
+          <Dropdown
+            trigger={['click']}
+            overlay={this.menu()}
+            placement="bottomCenter"
+          >
+            <Avatar
+              icon="user"
+              shape="circle"
+              size="large"
+            />
+          </Dropdown>
+        </div>
+      </LayoutHeader>
     )
   }
 }
