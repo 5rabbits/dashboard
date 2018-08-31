@@ -58,35 +58,35 @@ export default class Body extends Component {
         name: 'Victor Sanchez',
         commit: 'Test 12321',
         project: 'TimeBillingX',
-        date: '17/08/2018'
+        date: '12/08/2018'
       },
       {
         key: 2,
         name: 'Victor Sanchez',
         commit: 'Test 12321',
         project: 'TimeBillingX',
-        date: '17/08/2018'
+        date: '13/08/2018'
       },
       {
         key: 3,
         name: 'Victor Sanchez',
         commit: 'Test 12321',
         project: 'TimeBillingX',
-        date: '17/08/2018'
+        date: '14/08/2018'
       },
       {
         key: 4,
         name: 'Victor Sanchez',
         commit: 'Test 12321',
         project: 'TimeBillingX',
-        date: '17/08/2018'
+        date: '15/08/2018'
       },
       {
         key: 5,
         name: 'Victor Sanchez',
         commit: 'Test 12321',
         project: 'TimeBillingX',
-        date: '17/08/2018'
+        date: '16/08/2018'
       },
     ])
   }
@@ -101,7 +101,7 @@ export default class Body extends Component {
       {
         title: 'Commit',
         dataIndex: 'commit',
-        key: 'date',
+        key: 'commit',
       },
       {
         title: 'Proyecto',
