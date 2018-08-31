@@ -7,12 +7,14 @@ import {
   Dropdown,
   Layout,
 } from 'antd'
+import {observer} from 'mobx-react'
 
 import './Header.css'
+import { decorate } from 'mobx';
 
 const LayoutHeader = Layout.Header
 
-export default class Header extends Component {
+const Header = observer(class Header extends Component {
   static propTypes = {
     user: PropTypes.shape({
       name: PropTypes.string,
@@ -41,6 +43,10 @@ export default class Header extends Component {
   )
 
   render() {
+    const { user } = this.props
+
+    const userPhotoUrl = user ? user.photoURL : ''
+
     return (
       <LayoutHeader className="header">
         <div className="logo" />
@@ -58,10 +64,13 @@ export default class Header extends Component {
               icon="user"
               shape="circle"
               size="large"
+              src={userPhotoUrl}
             />
           </Dropdown>
         </div>
       </LayoutHeader>
     )
   }
-}
+})
+
+export default decorate(Header, {})
